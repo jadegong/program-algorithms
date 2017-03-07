@@ -1,9 +1,9 @@
 /*
- * 各种排序算法
+ * 插入和归并排序算法
  */
 #include "stdio.h"
 #include "stdlib.h"
-#include "limits.h"
+#include "limits.h" /*提供INT_MAX等常量*/
 
 void InsertionSort(int *a, int n);
 void MergeSlice(int *a, int p, int q, int r);
@@ -28,6 +28,7 @@ int main() {
     return 0;
 }
 
+// 插入排序
 void InsertionSort(int *a, int n) {
     for (int j = 1; j < n; j++) {
         int temp = a[j];
@@ -52,14 +53,16 @@ void MergeSlice(int *a, int p, int q, int r) {
     for (j = 0; j < n2; j++) {
         R[j] = a[q + j + 1];
     }
-    L[n1] = INT_MAX;
-    R[n2] = INT_MAX;
+    /*不使用边界值（哨兵）*/
+    /*L[n1] = INT_MAX;*/
+    /*R[n2] = INT_MAX;*/
     i = j = 0;
     for (int k = p; k <= r; k++) {
-        if (L[i] <= R[j]) {
+        if (i < n1 && L[i] <= R[j]) {
             a[k] = L[i];
             i++;
-        } else {
+        }
+        if (j < n2 && L[i] > R[j]) {
             a[k] = R[j];
             j++;
         }
