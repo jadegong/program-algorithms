@@ -12,17 +12,18 @@ void MergeSort(int *a, int p, int r);
 int main() {
     int len, i;
     int *a;
-    printf("请输入数组长度：");
-    scanf("%d", &len);
-    a = (int*)malloc(len * sizeof(int));
-    printf("请输入数组元素(空格分开)：\n");
-    for (i = 0; i < len; i++) {
-        scanf("%d", (a + i));
-    }
-    /*InsertionSort(a, len);*/
-    MergeSort(a, 0, len - 1);
-    for (i = 0; i < len; i++) {
-        printf("%d ", a[i]);
+    while (printf("请输入数组长度：") && scanf("%d", &len) != EOF && len > 0) {
+        a = (int*)malloc(len * sizeof(int));
+        printf("请输入数组元素(空格分开)：\n");
+        for (i = 0; i < len; i++) {
+            scanf("%d", (a + i));
+        }
+        /*InsertionSort(a, len);*/
+        MergeSort(a, 0, len - 1);
+        for (i = 0; i < len; i++) {
+            printf("%d ", a[i]);
+        }
+        printf("\n");
     }
     free(a);
     return 0;
@@ -56,13 +57,23 @@ void MergeSlice(int *a, int p, int q, int r) {
     /*不使用边界值（哨兵）*/
     /*L[n1] = INT_MAX;*/
     /*R[n2] = INT_MAX;*/
-    i = j = 0;
+    i = 0;
+    j = 0;
     for (int k = p; k <= r; k++) {
-        if (i < n1 && L[i] <= R[j]) {
+        if (i >= n1) { // 左边界
+            a[k] = R[j];
+            j++;
+            continue;
+        }
+        if (j >= n2) { // 右边界
             a[k] = L[i];
             i++;
+            continue;
         }
-        if (j < n2 && L[i] > R[j]) {
+        if (L[i] <= R[j]) {
+            a[k] = L[i];
+            i++;
+        } else {
             a[k] = R[j];
             j++;
         }
