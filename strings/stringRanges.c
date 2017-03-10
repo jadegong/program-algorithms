@@ -1,4 +1,5 @@
 /*
+ * ENV: ubuntu 16.04, clang-3.9
  * 描述：打印一个字符串中字符的所有全排列
  */
 #include "stdio.h"

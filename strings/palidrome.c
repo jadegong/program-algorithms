@@ -1,4 +1,5 @@
 /*
+ * ENV: ubuntu 16.04, clang-3.9
  * 描述：判断字符串是否为回文串
  */
 #include "stdio.h"

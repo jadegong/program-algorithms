@@ -1,4 +1,5 @@
 /*
+ * ENV: ubuntu 16.04, clang-3.9
  * 插入和归并排序算法
  */
 #include "stdio.h"

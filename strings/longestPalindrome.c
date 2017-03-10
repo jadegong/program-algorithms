@@ -1,4 +1,5 @@
 /*
+ * ENV: ubuntu 16.04, clang-3.9
  * 描述：给一个字符串，求它的最长回文子串的长度
  */
 #include "stdio.h"

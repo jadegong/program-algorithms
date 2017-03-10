@@ -1,4 +1,5 @@
 /*
+ * ENV: ubuntu 16.04, clang-3.9
  * Quick sort algorithms
  */
 #include "stdio.h"
